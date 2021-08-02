@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  gather_facts: true
+  vars_files: vars/instances_vars.yml
+  tasks:
+    - name: Create instances
+      os_server:
+        state: present
+        cloud: "{{ cloud }}"
+        name: "{{ instance.name }}"
+        image: "{{ instance.image }}"
+        key_name: "{{ instance.keypair }}"
+        flavor: "{{ instance.flavor }}"
+        security_groups: "{{ instance.security_group }}"
+        delete_fip: yes
+        wait: no
+        nics:
+          - net-name: "{{ instance.internal_network }}"
+        meta: "AnsibleGroup={{ instance.metadata.AnsibleGroup }},deployment_name={{ instance.metadata.deployment_name }},server_roll={{ instance.metadata.server_roll }}"
+      loop: "{{ instances }}"
+      loop_control:
+        loop_var: instance
+
+
