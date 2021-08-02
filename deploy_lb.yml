@@ -1,0 +1,17 @@
+---
+- name: Deploy haproxy load balancer
+  hosts: frontends
+  gather_facts: false 
+  become: true
+  tags:
+    - load_balancers
+  roles:
+    - role: firewall
+      vars:
+        firewall_service:
+          - http
+        firewall_tcp_ports:
+          - 80
+
+    - role: haproxy
+

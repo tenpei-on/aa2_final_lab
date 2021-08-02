@@ -5,7 +5,10 @@
     state: present
     disable_gpg_check: true
 
-- name: Install Postgresql packages
+- name: disable postgresql
+  command: dnf -y module disable postgresql
+
+- name: Install Postgresql10 packages
   package:
     name: "{{ __package }}"
     state: present

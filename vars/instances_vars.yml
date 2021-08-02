@@ -3,7 +3,7 @@ GUID: "{{ lookup('env', 'GUID') }}"
 dns_ip: "{{ ansible_facts.default_ipv4.address }}"
 cloud: "{{ GUID }}-project"
 instances:
-  - name: frontend
+  - name: frontend1
     keypair: "{{ GUID }}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
