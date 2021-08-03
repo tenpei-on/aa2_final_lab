@@ -1,0 +1,49 @@
+---
+GUID: "{{ lookup('env', 'GUID') }}"
+dns_ip: "{{ ansible_facts.default_ipv4.address }}"
+cloud: "{{ GUID }}-project"
+instances:
+  - name: frontend1
+    keypair: "{{ GUID }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ GUID }}-HostSG"
+    internal_network: "{{ GUID }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      server_roll: frontends
+      deployment_name: dev
+
+  - name: app1
+    keypair: "{{ GUID }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ GUID }}-HostSG"
+    internal_network: "{{ GUID }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      server_roll: app_servers
+      deployment_name: dev
+
+  - name: app2
+    keypair: "{{ GUID }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ GUID }}-HostSG"
+    internal_network: "{{ GUID }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      server_roll: app_servers
+      deployment_name: dev
+
+  - name: appdb1
+    keypair: "{{ GUID }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ GUID }}-HostSG"
+    internal_network: "{{ GUID }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      server_roll: database_servers
+      deployment_name: dev
+

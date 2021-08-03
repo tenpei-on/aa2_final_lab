@@ -1,0 +1,21 @@
+---
+- name: Add instances to In-Memory Inventory
+  hosts: localhost
+  gather_facts: false
+  vars_files: vars/instances_vars.yml
+  connection: local
+  vars:
+    internal_domain: example.com
+    HOME: "{{ lookup('ENV','HOME') }}"
+  roles:
+    - role: add_inventory
+
+- name: setting dns and attach subs
+  hosts: osp_instances
+  gather_facts: false
+  become: true
+  roles:
+    - role: configure_instance
+      
+
+
