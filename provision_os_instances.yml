@@ -6,7 +6,6 @@
     - name: Create instances
       os_server:
         state: present
-        cloud: "{{ cloud }}"
         name: "{{ instance.name }}"
         image: "{{ instance.image }}"
         key_name: "{{ instance.keypair }}"
