@@ -1,7 +1,7 @@
 ---
 GUID: "{{ lookup('env', 'GUID') }}"
 dns_ip: "{{ ansible_facts.default_ipv4.address }}"
-cloud: "{{ GUID }}-project"
+#cloud: "{{ GUID }}-project"
 instances:
   - name: frontend1
     keypair: "{{ GUID }}-keypair"
