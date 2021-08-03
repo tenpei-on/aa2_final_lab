@@ -1,7 +1,6 @@
 ---
 - name: Collection instance info
   os_server_info:
-    cloud: "{{ cloud }}"
   register: openstack_instances
 
 - name: Build In-Memory inventory
