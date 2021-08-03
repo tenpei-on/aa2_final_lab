@@ -9,13 +9,6 @@
     HOME: "{{ lookup('ENV','HOME') }}"
   roles:
     - role: add_inventory
-
-- name: setting dns and attach subs
-  hosts: osp_instances
-  gather_facts: false
-  become: true
-  roles:
-    - role: configure_instance
       
 
 
