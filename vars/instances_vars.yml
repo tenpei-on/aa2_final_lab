@@ -1,5 +1,5 @@
 ---
-GUID: "{{ lookup('env', 'GUID') }}"
+GUID: d5c9
 dns_ip: "{{ ansible_facts.default_ipv4.address }}"
 cloud: "{{ GUID }}-project"
 instances:
